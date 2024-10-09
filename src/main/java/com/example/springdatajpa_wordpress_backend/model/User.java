@@ -35,7 +35,10 @@ public class User {
     @Column(name = "user_status")
     private Integer status;
 
-    @Column(name = "display_name")
+    // @Column(name = "display_name") can be substitute with @Basic
+    // when property name matches the hibernate naming convension and
+    // the 'optional' field controls the 'not null' criteria
+    @Basic(optional = false)
     private String displayName;
 
     public Long getId() {
