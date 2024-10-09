@@ -1,12 +1,7 @@
 package com.example.springdatajpa_wordpress_backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "wp_usermeta")
@@ -18,6 +13,8 @@ public class UserMeta {
     private Long id;
 
     private Long userId;
+
+    @Size(max = 255)
     private String metaKey;
 
     // Lob(large object) = longtext in sql

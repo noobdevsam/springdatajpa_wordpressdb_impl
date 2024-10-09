@@ -1,7 +1,9 @@
 package com.example.springdatajpa_wordpress_backend.model;
 
 import java.sql.Timestamp;
+import org.hibernate.validator.constraints.URL;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "wp_users")
@@ -12,33 +14,51 @@ public class User {
     private Long id;
 
     @Column(name = "user_login")
+    @NotNull
+    @Size(max = 60)
     private String login;
 
     @Column(name = "user_pass")
+    @NotNull
+    @Size(max = 255)
     private String password;
 
     @Column(name = "user_nicename")
+    @NotNull
+    @Size(max = 50)
     private String nicename;
 
     @Column(name = "user_email")
+    @Email
+    @NotNull
+    @Size(max = 100)
     private String email;
 
     @Column(name = "user_url")
+    @URL
+    @NotNull
+    @Size(max = 100)
     private String url;
 
     @Column(name = "user_registered")
+    @NotNull
     private Timestamp registered;
 
     @Column(name = "user_activation_key")
+    @NotNull
+    @Size(max = 255)
     private String activationKey;
 
     @Column(name = "user_status")
+    @NotNull
     private Integer status;
 
     // @Column(name = "display_name") can be substitute with @Basic
     // when property name matches the hibernate naming convension and
     // the 'optional' field controls the 'not null' criteria
     @Basic(optional = false)
+    @NotNull
+    @Size(max = 255)
     private String displayName;
 
     public Long getId() {
