@@ -1,6 +1,7 @@
 package com.example.springdatajpa_wordpress_backend.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 import org.hibernate.validator.constraints.URL;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -64,6 +65,10 @@ public class User {
     @NotNull
     @Size(max = 255)
     private String displayName;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private Set<UserMeta> userMetaSet;
 
     public Long getId() {
         return id;
@@ -145,5 +150,12 @@ public class User {
         this.displayName = displayName;
     }
 
-    
+    public Set<UserMeta> getUserMetaSet() {
+        return userMetaSet;
+    }
+
+    public void setUserMetaSet(Set<UserMeta> userMetaSet) {
+        this.userMetaSet = userMetaSet;
+    }
+
 }
