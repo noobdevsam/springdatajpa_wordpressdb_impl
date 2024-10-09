@@ -15,6 +15,7 @@ public class UserMeta {
     private Long userId;
 
     @Size(max = 255)
+    @Column(columnDefinition = "longtext")
     private String metaKey;
 
     // Lob(large object) = longtext in sql
